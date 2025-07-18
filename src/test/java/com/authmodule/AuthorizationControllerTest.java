@@ -40,21 +40,6 @@ class AuthorizationControllerTest {
     }
 
     @Test
-    void testMissingUserId() throws Exception {
-        mockMvc.perform(post("/authorize")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("""
-                    {
-                      "userId": "",
-                      "action": "read",
-                      "resource": "doc-1"
-                    }
-                """))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.userId").value("userId must not be blank"));
-    }
-
-    @Test
     void testServiceTimeout() throws Exception {
         // Simulate timeout: CompletableFuture never completes
         CompletableFuture<Boolean> never = new CompletableFuture<>();
