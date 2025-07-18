@@ -39,13 +39,6 @@ curl -v -X POST http://localhost:8080/authorize -H "Content-Type: application/js
 }
 ```
 
-## Tests
-
-Run:
-```
-mvn test
-```
-
 ## Notes
 - Downstream service mocked using in-memory map; entries are userid, action, resource
 - Controller times out after 2 seconds (hardcoded in the class for now), returns HTTP 504. This can be simulated by setting the below value to > 2000 in the service class:
@@ -61,7 +54,8 @@ try { Thread.sleep(500); } catch (InterruptedException ignored) {}
 - Thread pool configured for use at the service layer
 - Input validation performed
 - Global error handling implemented for couple of error types (should add more)
-- 
+- Junit tests - INCOMPLETE - I pushed what I have so far, but they do not pass.
+- "Production-ready" means the application is stable, secure, and designed to run reliably under real-world conditions. It includes proper error handling, observability (logging and metrics), concurrency support, and is resilient to failures like timeouts or crashes in downstream systems.
 - Total time spent = 4 hours
 
 ## TODOs
